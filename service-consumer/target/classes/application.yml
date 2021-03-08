@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: service-consumer
+server:
+  port: 8080
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: http://Hins:Hins2021@127.0.0.1:1111/eureka,http://Hins:Hins2021@127.0.0.1:1112/eureka
+
+logging:
+  level:
+    com.netflix: warn

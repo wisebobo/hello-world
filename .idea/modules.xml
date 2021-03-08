@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hazelcast-client/hazelcast-client.iml" filepath="$PROJECT_DIR$/hazelcast-client/hazelcast-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hazelcast-eureka/hazelcast-eureka.iml" filepath="$PROJECT_DIR$/hazelcast-eureka/hazelcast-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/hello-world.iml" filepath="$PROJECT_DIR$/.idea/hello-world.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-consumer/service-consumer.iml" filepath="$PROJECT_DIR$/service-consumer/service-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-provider/service-provider.iml" filepath="$PROJECT_DIR$/service-provider/service-provider.iml" />
+    </modules>
+  </component>
+</project>

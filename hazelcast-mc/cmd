@@ -1,0 +1,1 @@
+java -cp "hazelcast-management-center-4.0.1.war;C:\Users\Hins\Desktop\hazelcast-management-center-4.0.1\hazelcast-eureka-one-2.0.1.jar" -Dhazelcast.shouldUseDns=false -Dhazelcast.name=hazelcast-server -Dhazelcast.serviceUrl.default=http://Hins:Hins2021@127.0.0.1:1111/eureka,http://Hins:Hins2021@127.0.0.1:1112/eureka com.hazelcast.webmonitor.Launcher
