@@ -23,11 +23,31 @@ The following dependency is about hazelcast and hazelcast-eureka
         </dependency>
 ```
 
-This properties config eureka server url and hazelcast name.
-```properties
-hazelcast.shouldUseDns=false
-hazelcast.name=hazelcast-server
-hazelcast.serviceUrl.default=http://Hins:Hins2021@127.0.0.1:1111/eureka,http://Hins:Hins2021@127.0.0.1:1112/eureka
+The following eureka yml is set up for hazelcast.
+```yaml
+spring:
+  application:
+    name: hazelcast-server
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.cloud.client.ip-address}:${hazelcast.port}
+    non-secure-port: ${hazelcast.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://Hins:Hins2021@127.0.0.1:1111/eureka,http://Hins:Hins2021@127.0.0.1:1112/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
 ```
 
 Below config is about hazelcast server register with eureka.
@@ -36,16 +56,17 @@ Below config is about hazelcast server register with eureka.
     private int hazelcastPort;
 
     @Bean
-    public Config hazelcastConfig() {
+    public Config hazelcastConfig(EurekaClient eurekaClient) {
+        EurekaOneDiscoveryStrategyFactory.setEurekaClient(eurekaClient);
         Config config = new Config();
-        config.getNetworkConfig().setPort(hazelcastPort);
         config.setClusterName("eureka");
+        config.getNetworkConfig().setPort(hazelcastPort);
         config.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
         config.getNetworkConfig().getJoin().getEurekaConfig()
                 .setEnabled(true)
                 .setProperty("self-registration", "true")
-                .setProperty("namespace", "hazelcast");
-
+                .setProperty("namespace", "hazelcast")
+                .setProperty("use-metadata-for-host-and-port", "true");
         return config;
     }
 ```

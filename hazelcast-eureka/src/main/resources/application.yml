@@ -1,23 +1,17 @@
 spring:
   application:
-    name: hazelcast-client
-server:
-  port: 9089
+    name: hazelcast-server
 
 eureka:
   instance:
     preferIpAddress: true
-    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    instanceId: ${spring.cloud.client.ip-address}:${hazelcast.port}
+    non-secure-port: ${hazelcast.port}
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://Hins:Hins2021@127.0.0.1:1111/eureka,http://Hins:Hins2021@127.0.0.1:1112/eureka
-
-logging:
-  level:
-    com.netflix: warn
-    com.hsbc.itid.es: INFO
 
 management:
   endpoints:

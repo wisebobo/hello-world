@@ -9,7 +9,7 @@ eureka:
     preferIpAddress: true
     instanceId: ${spring.cloud.client.ip-address}:${server.port}
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://Hins:Hins2021@127.0.0.1:1111/eureka,http://Hins:Hins2021@127.0.0.1:1112/eureka
@@ -17,3 +17,12 @@ eureka:
 logging:
   level:
     com.netflix: warn
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
