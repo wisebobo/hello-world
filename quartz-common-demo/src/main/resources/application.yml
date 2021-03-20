@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: quartz-demo-service
+  datasource:
+    dynamic:
+      enable: true
+    core:
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/release?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+      driver-class-name:  com.mysql.cj.jdbc.Driver
+    quartz:
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/quartz?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+      driver-class-name:  com.mysql.cj.jdbc.Driver
+
+#mybatis:
+  # 搜索指定包别名
+  #typeAliasesPackage: com.hsbc.itid.es.digiba.quartz.entity
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  #mapperLocations: classpath*:quartz/**/*Mapper.xml
