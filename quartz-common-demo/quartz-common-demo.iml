@@ -42,6 +42,7 @@
     <orderEntry type="library" name="Maven: structlog4j:structlog4j-api:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: structlog4j:structlog4j-json:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish:javax.json:1.1" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.60" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-sleuth-core:2.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-commons:2.2.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.3.6.RELEASE" level="project" />

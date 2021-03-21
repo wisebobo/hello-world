@@ -45,11 +45,11 @@ public class SysJobLogController
     }
 
 
-    @PostMapping("/clean")
-    @ResponseBody
-    @ApiOperation("clean log")
-    public void clean()
-    {
-        jobLogService.cleanJobLog();
-    }
+//    @PostMapping("/clean")
+//    @ResponseBody
+//    @ApiOperation("clean log")
+//    public void clean()
+//    {
+//        jobLogService.cleanJobLog();
+//    }
 }

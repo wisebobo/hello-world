@@ -9,6 +9,7 @@ import com.hsbc.itid.es.digiba.quartz.constant.ScheduleConstants;
 import com.hsbc.itid.es.digiba.quartz.entity.Result;
 import com.hsbc.itid.es.digiba.quartz.entity.SysJob;
 import com.hsbc.itid.es.digiba.quartz.service.ISysJobService;
+import com.hsbc.itid.es.log.annotation.LogAnnotation;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
@@ -59,14 +60,15 @@ public class BusinessServiceImpl implements BusinessService {
     public boolean release(Business business) throws JsonProcessingException {
 
         //valid
-        try {
-            TimeUnit.SECONDS.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            TimeUnit.SECONDS.sleep(1);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         //doRelease
-        return doRelease(objectMapper.writeValueAsString(business));
+        boolean flag = doRelease(objectMapper.writeValueAsString(business));
+        return flag;
 
     }
 
@@ -98,12 +100,13 @@ public class BusinessServiceImpl implements BusinessService {
         return resultInsert;
     }
 
+    @LogAnnotation(module = "quartz-demo-service")
     public void countTotalUser() throws JsonProcessingException {
         int count = atomicInteger.incrementAndGet();
         log.info("count: {} ",count);
     }
 
-
+    @LogAnnotation(module = "quartz-demo-service")
     public boolean doRelease(String params) throws JsonProcessingException {
         Business business = objectMapper.readValue(params,Business.class);
         log.info("Business: {} ",business);
