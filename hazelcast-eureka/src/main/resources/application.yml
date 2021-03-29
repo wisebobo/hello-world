@@ -2,11 +2,15 @@ spring:
   application:
     name: hazelcast-server
 
+hazelcast:
+  port: 5701
+server:
+  port: 9000
+
 eureka:
   instance:
     preferIpAddress: true
     instanceId: ${spring.cloud.client.ip-address}:${hazelcast.port}
-    non-secure-port: ${hazelcast.port}
   client:
     register-with-eureka: true
     fetch-registry: true
