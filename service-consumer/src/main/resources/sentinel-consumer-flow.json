@@ -1,0 +1,10 @@
+[
+    {
+        "resource": "com.hsbc.itid.es.consumer.controller.ServiceConsumerController.*",
+        "count": 10,
+        "grade": 1,
+        "limitApp": "default",
+        "strategy": 0,
+        "controlBehavior": 0
+    }
+]

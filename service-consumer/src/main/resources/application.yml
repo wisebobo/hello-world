@@ -1,8 +1,21 @@
 spring:
   application:
     name: service-consumer
+  cloud:
+    sentinel:
+      filter:
+        enabled: false
+      transport:
+        dashboard: 127.0.0.1:8888
+        eager: true
+      datasource:
+        ds1:
+          file:
+            file: classpath:sentinel-block-handler-flow.json
+            rule-type: flow
 server:
   port: 8080
+
 
 eureka:
   instance:
@@ -26,3 +39,9 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+resttemplate:
+  sentinel:
+    enabled: true
+feign:
+  sentinel:
+    enabled: true

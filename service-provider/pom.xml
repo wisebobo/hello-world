@@ -47,6 +47,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-core</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
