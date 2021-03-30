@@ -14,12 +14,5 @@
         "limitApp": "default",
         "strategy": 0,
         "controlBehavior": 0
-    },{
-    "resource": "http://SERVICE-PROVIDER",
-    "count": 1,
-    "grade": 1,
-    "limitApp": "default",
-    "strategy": 0,
-    "controlBehavior": 0
     }
 ]
