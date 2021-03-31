@@ -19,10 +19,11 @@ public class ServiceProviderController {
 
     @GetMapping("/provider/{id}")
     public R providerInfo(@PathVariable String id){
-        log.info("Provider port: {}", port);
+        log.info("Provider port: {}, request id: {}", port,id);
         HashMap<String,String> hashMap = new HashMap<>();
         hashMap.put("1","hello");
         hashMap.put("2","world");
+        hashMap.put("port",port);
         return R.ok(hashMap);
     }
 

@@ -3,11 +3,6 @@ spring:
     name: service-consumer
   cloud:
     sentinel:
-      filter:
-        enabled: false
-      transport:
-        dashboard: 127.0.0.1:8888
-        eager: true
       datasource:
         ds1:
           file:

@@ -3,7 +3,7 @@ package com.hsbc.itid.es.consumer.controller;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.hsbc.itid.es.consumer.domain.R;
-import com.hsbc.itid.es.consumer.feign.SentinelFeignService;
+import com.hsbc.itid.es.consumer.feign.ProviderFeignService;
 import com.hsbc.itid.es.consumer.handler.SentinelExceptionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -26,7 +25,7 @@ public class SentinelController {
     private RestTemplate restTemplate;
 
     @Resource
-    private SentinelFeignService sentinelFeignService;
+    private ProviderFeignService providerFeignService;
 
     @SentinelResource(value = "blockHandler", blockHandler = "blockExceptionHandler")
     @GetMapping(value = "/blockHandler", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -55,7 +54,7 @@ public class SentinelController {
 
     @GetMapping(value = "/openfeign/blockHandler", produces = MediaType.APPLICATION_JSON_VALUE)
     public R<?> openFeignBlockHandler() throws InterruptedException {
-        R body = sentinelFeignService.providerInfo("1");
+        R body = providerFeignService.providerInfo("1");
 //        TimeUnit.SECONDS.sleep(3);
 //        log.info("body-------------",body);
         return body;
