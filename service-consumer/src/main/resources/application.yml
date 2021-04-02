@@ -8,6 +8,7 @@ spring:
           file:
             file: classpath:sentinel-block-handler-flow.json
             rule-type: flow
+            #rule-type: degrade
 server:
   port: 8080
 

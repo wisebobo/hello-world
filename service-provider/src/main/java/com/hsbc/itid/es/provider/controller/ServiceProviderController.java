@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 
 @RestController
@@ -24,6 +26,7 @@ public class ServiceProviderController {
         hashMap.put("1","hello");
         hashMap.put("2","world");
         hashMap.put("port",port);
+        hashMap.put("time", LocalDateTime.now().toString());
         return R.ok(hashMap);
     }
 
