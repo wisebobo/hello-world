@@ -116,23 +116,28 @@ The following dependency is about hazelcast and hazelcast-eureka
         </dependency>
 ```
 
-This properties config eureka server url and hazelcast name.
-```properties
-hazelcast.shouldUseDns=false
-hazelcast.name=hazelcast-server
-hazelcast.serviceUrl.default=http://Hins:Hins2021@127.0.0.1:1111/eureka,http://Hins:Hins2021@127.0.0.1:1112/eureka
-```
-
 Below config is about hazelcast client and it doesn't need to register with eureka.
 ```java
+@Configuration
+public class HazelcastClientConfig {
+
+    @Value("${eureka.client.service-url.defaultZone}")
+    private String eurekaUrl;
+
     @Bean
     public ClientConfig clientConfig() {
         ClientConfig clientConfig = new ClientConfig();
         clientConfig.setClusterName("eureka");
         clientConfig.getNetworkConfig().getEurekaConfig().setEnabled(true)
-                .setProperty("namespace", "hazelcast");
+                .setProperty("namespace", "hazelcast")
+                .setProperty("use-metadata-for-host-and-port", "true")
+                .setProperty("use-classpath-eureka-client-props","false")
+                .setProperty("name","hazelcast-server")
+                .setProperty("serviceUrl.default",eurekaUrl);
         return clientConfig;
     }
+
+}
 ```
 
 Sample code for read and write data in springboot.
